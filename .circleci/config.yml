@@ -1,17 +1,35 @@
 version: 2.1
 orbs:
-  node: circleci/node@1.1.6
+  node: circleci/node@2.0.1
+
+executors:
+  executor1:
+    docker:
+      - image: node/default
+    working_directory: /env1
+  executor2:
+    docker:
+      - image: node/default
+    working_directory: /env2
+
 jobs:
-  build-and-test:
-    executor:
-      name: node/default
+  build1:
+    executor: executor1
     steps:
       - checkout
       - node/with-cache:
           steps:
             - run: npm install
-            # - run: npm test
+      - run: npm run start
+  build2:
+    executor: executor2
+    steps:
+      - checkout
+      - node/install-packages:
+          with-cache: true
+      - run: npm run start
 workflows:
-    build-and-test:
+    buildAll:
       jobs:
-        - build-and-test
+        - build1
+        - build2
