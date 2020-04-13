@@ -13,15 +13,15 @@ orbs:
 #     working_directory: /env2
 
 jobs:
-  install-node-example:
-    docker:
-      - image: 'cimg/base:stable'
-    steps:
-      - checkout
-      - node/install:
-          install-yarn: true
-          node-version: latest
-      - run: node --version
+  # install-node-example:
+  #   docker:
+  #     - image: 'cimg/base:stable'
+  #   steps:
+  #     - checkout
+  #     - node/install:
+  #         install-yarn: true
+  #         node-version: latest
+  #     - run: node --version
   build1:
     executor:
       name: node/default
@@ -30,6 +30,7 @@ jobs:
       - checkout
       - node/install-packages:
           with-cache: true
+          app-dir: ~/env1
       - run: npm run start
   build2:
     executor:
@@ -39,10 +40,11 @@ jobs:
       - checkout
       - node/install-packages:
           with-cache: true
+          app-dir: ~/env2
       - run: npm run start
 workflows:
     buildAll:
       jobs:
-        - install-node-example
+        # - install-node-example
         - build1
         - build2
