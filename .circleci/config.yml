@@ -13,6 +13,15 @@ orbs:
 #     working_directory: /env2
 
 jobs:
+  install-node-example:
+    docker:
+      - image: 'cimg/base:stable'
+    steps:
+      - checkout
+      - node/install:
+          install-yarn: true
+          node-version: latest
+      - run: node --version
   build1:
     executor:
       name: node/default
@@ -34,5 +43,6 @@ jobs:
 workflows:
     buildAll:
       jobs:
+        - install-node-example
         - build1
         - build2
