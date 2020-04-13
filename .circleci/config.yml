@@ -17,9 +17,8 @@ jobs:
     executor: executor1
     steps:
       - checkout
-      - node/with-cache:
-          steps:
-            - run: npm install
+      - node/install-packages:
+          with-cache: true
       - run: npm run start
   build2:
     executor: executor2
