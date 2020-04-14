@@ -25,23 +25,30 @@ jobs:
   build1:
     executor:
       name: node/default
+    working_directory: ~/circle_ci
     steps:
       - checkout
-      - node/install-packages:
-          with-cache: true
-          app-dir: /circle_ci/env1
-      - run: cd /circle_ci/env1
-      - run: npm run start
+      - run:
+          name: test1
+          command: ls
+      # - node/install-packages:
+      #     with-cache: true
+      #     app-dir: /circle_ci/env1
+      # - run: cd /circle_ci/env1
+      # - run: npm run start
   build2:
     executor:
       name: node/default
     steps:
       - checkout
-      - node/install-packages:
-          with-cache: true
-          app-dir: /circle_ci/env2
-      - run: cd /circle_ci/env2
-      - run: npm run start
+      - run:
+          name: test2
+          command: ls
+      # - node/install-packages:
+      #     with-cache: true
+      #     app-dir: /circle_ci/env2
+      # - run: cd /circle_ci/env2
+      # - run: npm run start
 workflows:
     buildAll:
       jobs:
