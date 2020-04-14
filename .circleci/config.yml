@@ -25,7 +25,7 @@ jobs:
   build1:
     executor:
       name: node/default
-    working_directory: ~/project/circle_ci
+    working_directory: ~/project
     steps:
       - checkout
       - run:
@@ -33,7 +33,7 @@ jobs:
           command: ls
       - run:
           name: test1_1
-          command: cd ~/env1 && ls
+          command: cd ~/project/env1 && ls
       # - run:
       #     name: test1_2
       #     command: ls
@@ -58,7 +58,7 @@ jobs:
       #     command: cd /env2 && ls
       - node/install-packages:
           with-cache: true
-          app-dir: ~/env2
+          app-dir: ~/project/env2
       # - node/install-packages:
       #     with-cache: true
       #     app-dir: /circle_ci/env2
