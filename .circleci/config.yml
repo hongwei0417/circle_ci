@@ -31,9 +31,9 @@ jobs:
       - run:
           name: test1_0
           command: ls
-      # - run:
-      #     name: test1_1
-      #     command: cd /env1
+      - run:
+          name: test1_1
+          command: cd ~/env1 && ls
       # - run:
       #     name: test1_2
       #     command: ls
@@ -58,7 +58,7 @@ jobs:
       #     command: cd /env2 && ls
       - node/install-packages:
           with-cache: true
-          app-dir: ~/project/circle_ci/env2
+          app-dir: ~/env2
       # - node/install-packages:
       #     with-cache: true
       #     app-dir: /circle_ci/env2
