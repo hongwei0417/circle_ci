@@ -25,20 +25,21 @@ jobs:
   build1:
     executor:
       name: node/default
+    working_directory: ~/project/circle_ci
     steps:
       - checkout
       - run:
           name: test1_0
           command: ls
-      - run:
-          name: test1_1
-          command: cd /env1
-      - run:
-          name: test1_2
-          command: ls
-      - node/install-packages:
-          with-cache: true
-          app-dir: /env1
+      # - run:
+      #     name: test1_1
+      #     command: cd /env1
+      # - run:
+      #     name: test1_2
+      #     command: ls
+      # - node/install-packages:
+      #     with-cache: true
+      #     app-dir: /env1
       # - node/install-packages:
       #     with-cache: true
       #     app-dir: /circle_ci/env1
@@ -52,9 +53,9 @@ jobs:
       - run:
           name: test2_0
           command: ls
-      - run:
-          name: test2_1
-          command: cd /env2 && ls
+      # - run:
+      #     name: test2_1
+      #     command: cd /env2 && ls
       - node/install-packages:
           with-cache: true
           app-dir: ~/project/circle_ci/env2
