@@ -32,13 +32,13 @@ jobs:
           command: ls
       - run:
           name: See env1 Dir
-          command: cd ~/project/env1 && ls
+          command: cd ./env1 && ls
       - node/install-packages:
           with-cache: true
-          app-dir: ~/project/env1
-      - run:
-          name: Run npm in env1
-          command: cd ~/project/env1 && npm run start
+          app-dir: ./env1
+      # - run:
+      #     name: Run npm in env1
+      #     command: cd ~/project/env1 && npm run start
   build2:
     executor:
       name: node/default
