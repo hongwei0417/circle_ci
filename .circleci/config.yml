@@ -29,7 +29,7 @@ jobs:
       - checkout
       - node/install-packages:
           with-cache: true
-          app-dir: ~/env1
+          app-dir: /env1
       - run: cd /env1
       - run: npm run start
   build2:
@@ -39,7 +39,7 @@ jobs:
       - checkout
       - node/install-packages:
           with-cache: true
-          app-dir: ~/env2
+          app-dir: /env2
       - run: cd /env1
       - run: npm run start
 workflows:
