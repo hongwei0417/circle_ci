@@ -25,15 +25,15 @@ jobs:
   build1:
     executor:
       name: node/default
-    working_directory: ~/project
+    working_directory: ~/project/env1
     steps:
       - checkout
       - run:
           name: test1_0
           command: ls
-      - run:
-          name: test1_1
-          command: cd ~/project/env1 && ls
+      # - run:
+      #     name: test1_1
+      #     command: cd ~/project/env1 && ls
       # - run:
       #     name: test1_2
       #     command: ls
