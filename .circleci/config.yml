@@ -29,8 +29,8 @@ jobs:
       - checkout
       - node/install-packages:
           with-cache: true
-          app-dir: /env1
-      - run: cd /env1
+          app-dir: /circle_ci/env1
+      - run: cd /circle_ci/env1
       - run: npm run start
   build2:
     executor:
@@ -39,8 +39,8 @@ jobs:
       - checkout
       - node/install-packages:
           with-cache: true
-          app-dir: /env2
-      - run: cd /env1
+          app-dir: /circle_ci/env2
+      - run: cd /circle_ci/env2
       - run: npm run start
 workflows:
     buildAll:
