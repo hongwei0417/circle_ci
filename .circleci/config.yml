@@ -28,10 +28,10 @@ jobs:
     steps:
       - checkout
       - run:
-          name: test1-0
+          name: test1_0
           command: ls
       - run:
-          name: test1-1
+          name: test1_1
           - node/install-packages:
               with-cache: true
               app-dir: /env1
@@ -46,10 +46,10 @@ jobs:
     steps:
       - checkout
       - run:
-          name: test2-0
+          name: test2_0
           command: ls
       - run:
-          name: test2-1
+          name: test2_1
           - node/install-packages:
               with-cache: true
               app-dir: ~project/circle_ci/env2
