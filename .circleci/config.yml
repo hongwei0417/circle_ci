@@ -36,9 +36,9 @@ jobs:
       - node/install-packages:
           with-cache: true
           app-dir: ./env1
-      # - run:
-      #     name: Run npm in env1
-      #     command: cd ~/project/env1 && npm run start
+      - run:
+          name: Build env1
+          command: npm build env1
   build2:
     executor:
       name: node/default
@@ -49,13 +49,13 @@ jobs:
           command: ls
       - run:
           name: See env2 Dir
-          command: cd ~/project/env2 && ls
+          command: cd ./env2 && ls
       - node/install-packages:
           with-cache: true
-          app-dir: ~/project/env2
+          app-dir: ./env2
       - run:
           name: Run npm in env2
-          command: cd ~/project/env2 && npm run start
+          command: cd ./env2 && npm run start
 workflows:
     buildAll:
       jobs:
