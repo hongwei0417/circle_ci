@@ -25,45 +25,37 @@ jobs:
   build1:
     executor:
       name: node/default
-    working_directory: ~/project/env1
     steps:
       - checkout
       - run:
-          name: test1_0
+          name: See [~/project] Dir
           command: ls
-      # - run:
-      #     name: test1_1
-      #     command: cd ~/project/env1 && ls
-      # - run:
-      #     name: test1_2
-      #     command: ls
-      # - node/install-packages:
-      #     with-cache: true
-      #     app-dir: /env1
-      # - node/install-packages:
-      #     with-cache: true
-      #     app-dir: /circle_ci/env1
-      # - run: cd /circle_ci/env1
-      # - run: npm run start
+      - run:
+          name: See env1 Dir
+          command: cd ~/project/env1 && ls
+      - node/install-packages:
+          with-cache: true
+          app-dir: ~/project/env1
+      - run:
+          name: Run npm in env1
+          command: cd ~/project/env1 && npm run start
   build2:
     executor:
       name: node/default
     steps:
       - checkout
       - run:
-          name: test2_0
+          name: See [~/project] Dir
           command: ls
-      # - run:
-      #     name: test2_1
-      #     command: cd /env2 && ls
+      - run:
+          name: See env2 Dir
+          command: cd ~/project/env2 && ls
       - node/install-packages:
           with-cache: true
           app-dir: ~/project/env2
-      # - node/install-packages:
-      #     with-cache: true
-      #     app-dir: /circle_ci/env2
-      # - run: cd /circle_ci/env2
-      # - run: npm run start
+      - run:
+          name: Run npm in env2
+          command: cd ~/project/env2 && npm run start
 workflows:
     buildAll:
       jobs:
