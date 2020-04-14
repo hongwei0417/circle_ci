@@ -25,22 +25,22 @@ jobs:
   build1:
     executor:
       name: node/default
-    working_directory: ~/env1
     steps:
       - checkout
       - node/install-packages:
           with-cache: true
           app-dir: ~/env1
+      - run: cd /env1
       - run: npm run start
   build2:
     executor:
       name: node/default
-    working_directory: ~/env2
     steps:
       - checkout
       - node/install-packages:
           with-cache: true
           app-dir: ~/env2
+      - run: cd /env1
       - run: npm run start
 workflows:
     buildAll:
